@@ -1,0 +1,14 @@
+<mat-progress-bar mode="indeterminate" color="accent" *ngIf="loading"></mat-progress-bar>
+<div
+  class="stories-list"
+  infinite-scroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="0"
+  [infiniteScrollDisabled]="loading"
+  (scrolled)="loadStories()"
+>
+  <ng-container *ngFor="let story of stories">
+    <app-story [story]="story"></app-story>
+  </ng-container>
+  <mat-spinner diameter="40" *ngIf="loading"></mat-spinner>
+</div>
